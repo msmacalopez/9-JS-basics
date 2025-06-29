@@ -168,9 +168,9 @@ try {
 
 //Timeschedulling
 //set time out: wait for 3 second to execute the FX inside
-setTimeout(() => {
-  console.log("From set timeout");
-}, 3000);
+// setTimeout(() => {
+//   console.log("From set timeout");
+// }, 3000);
 
 //set Interval: know the time interval and keep executing after the interval time
 // let i = 0;
@@ -183,42 +183,174 @@ setTimeout(() => {
 
 //challenge
 
-console.log("1. starting");
-console.log("2. starting");
-console.log("3. starting");
-console.log("4. starting");
-console.log("5. starting");
-console.log("6. starting");
+// console.log("1. starting");
+// console.log("2. starting");
+// console.log("3. starting");
+// console.log("4. starting");
+// console.log("5. starting");
+// console.log("6. starting");
 
-console.log("1 executed");
+// console.log("1 executed");
 
-const info = () => {
-  console.log("2 executed");
-};
+// const info = () => {
+//   console.log("2 executed");
+// };
 
-console.log("3 executed");
+// console.log("3 executed");
 
-setTimeout(() => {
-  console.log("4 executed goes to call back queue position 2");
-}, 1);
+// setTimeout(() => {
+//   console.log("4 executed goes to call back queue position 2");
+// }, 1);
 
-info();
+// info();
 
-setTimeout(() => {
-  console.log("5 executed goes to call back queue position 1");
-}, 0);
+// setTimeout(() => {
+//   console.log("5 executed goes to call back queue position 1");
+// }, 0);
 
-console.log("6 executed");
-console.log("6 executed");
-console.log("6 executed");
-console.log("6 executed");
-console.log("6 executed");
+// console.log("6 executed");
+// console.log("6 executed");
+// console.log("6 executed");
+// console.log("6 executed");
+// console.log("6 executed");
 
 // debugger;
 
 // Loops
-//for
+//for - next with problems:
+for (let i = 0; i <= 9; i++) {
+  if (i % 2 == 0) {
+    console.log(i);
+    continue;
+  }
+  //the following never get to execute
+  if (i === 6) {
+    console.log(i);
+    break;
+  }
+}
 
 //while
-
+let i = 0;
+while (i <= 10) {
+  i++;
+  console.log(i);
+}
 //do while
+i = 18;
+do {
+  console.log(i);
+  i++;
+} while (i <= 10);
+
+//data manipulation
+// safe Number = -2^53-1 to 2^53-1 (for JS specific)
+const value = 2_132_143_432_432_432_423_443;
+console.log(typeof value);
+
+const no_number = "1234";
+//string to number
+let number = +no_number;
+console.log(typeof number);
+//string to number
+number = Number(no_number);
+console.log(typeof number);
+
+//Parse
+const no_number2 = "1o2.34a";
+console.log(isNaN(no_number2)); //false-->is a number
+
+//check number from left, digit by digit
+number = parseFloat(no_number2);
+console.log(isNaN(number), number);
+
+//check number from left, digit by digit
+number = parseInt(no_number2);
+console.log(isNaN(number), number);
+
+let value_withStrings = "2" + (3 + 3);
+console.log(value_withStrings);
+
+value_withStrings = 1 + 3 + "2";
+console.log(value_withStrings);
+
+value_withStrings = 1 + "2" + 3;
+console.log(value_withStrings);
+
+//String, without quatations only TRUE/FALSE or javascript class
+const hi = "hello"; //'', "", ``
+
+// skipt character: \
+const hey = 'Hi, I\'m "Maca"\t \\ from Sydney';
+console.log(hey);
+
+const hola = `hi, i'm Macarena \t \ from chile`;
+console.log(hola);
+
+//concatenation
+const n = "Maca";
+const loc = "chile";
+let bio = "Hi, this is " + n + " from h" + loc;
+console.log(bio);
+
+//new method: template literal
+bio = `Hi, this is ${n} from ${loc} using string literals
+
+`;
+console.log(bio);
+
+//count the total characters
+const counting = bio.length;
+console.log(counting);
+
+//indexOf, lastIndexOf, search
+const i1 = bio.indexOf("H"); //starts from 0
+console.log(i1);
+
+const i2 = bio.lastIndexOf("maca"); //not found is -1
+console.log(i2);
+
+const i3 = bio.search("z"); //not found is -1
+console.log(i3);
+
+//CharAt, [], split
+let look = bio.charAt[5];
+look = bio[5]; // same
+console.log(look);
+
+//split1
+let split1 = bio.split(); //all 1 item of array
+console.log(split1);
+
+split1 = bio.split(""); //split every single split to the aarray
+console.log(split1);
+
+split1 = bio.split("Maca"); //split in Maca, but Maca disappears
+console.log(split1);
+
+//slice, substring //substr--> depricated
+let slice1 = bio.slice(0, 5); //take string from 0 to 4, 5 is not included (5 is the length)
+console.log(slice1);
+
+slice1 = bio.slice(0); //takes everything from 0 to final
+console.log(slice1);
+
+// takes from left to right:
+slice1 = bio.slice(-5); //last 5
+console.log(slice1);
+
+//replace, trim
+let replace1 = bio.replace("chile", "Chile"); //only the first "chile"
+replace1 = replace1.replaceAll("i", "I");
+console.log(replace1);
+
+//trim only trims spaces at the beggining and end
+console.log(replace1.length);
+replace1 = replace1.trim();
+console.log(replace1.length);
+
+//to UPPER OR LOWERCASE
+replace1 = replace1.toLocaleLowerCase();
+console.log(replace1);
+replace1 = replace1.toLocaleUpperCase();
+console.log(replace1);
