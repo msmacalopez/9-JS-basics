@@ -24,27 +24,24 @@ const b = 0;
 
 //change in memory:
 
-console.log(c++);
+console.log(c++); //9
 //shows/read first and later update in memory
 
-console.log(c);
-console.log(++c);
+console.log(c); //10
+console.log(++c); //11
 //update first and later print/read
 
 //Comparisons
-//==, === (case sensitive)
+//==, === (case sensitive, type sensitive)
 
 // check datatype
-console.log(typeof c);
-//number
+console.log(typeof c); //number
 
 let fname = null;
-console.log(typeof fname);
-// object
+console.log(typeof fname); // object
 
 let lname;
-console.log(typeof lname);
-//undefined (cause doesn't have any value, only declared)
+console.log(typeof lname); //undefined (cause doesn't have any value, only declared)
 
 // Referencial datatype => object, array, functions
 //OBJECT
@@ -55,14 +52,15 @@ const userObject = {
   fName: "Prem",
   phone: 2345,
 };
-console.log(userObject);
+console.log(userObject); //{}
 console.log(typeof userObject); //object
 
 //ARRAY -->they must be store in sequential order
 const userArray = [];
-// console.log(userArray);  --> non defined
+console.log(userArray); // []
 console.log(typeof userArray); //object
 
+let userArray2;
 userArray2 = ["prem", 2345, true, { skills: "lots, css" }];
 console.log(userArray2);
 console.log(typeof userArray2); //object
@@ -72,6 +70,7 @@ function add() {
   console.log(1 + 2);
 }
 add();
+console.log(typeof add()); //undefined
 
 //check values in Primitive datatype
 let fName = "maca";
@@ -89,13 +88,17 @@ const object2 = object1; //object2 point same than object1
 console.log(object1, object2); //maca maca
 
 object1.fName = "prem";
-console.log(object1, object2); //prem prem
+console.log(object1, object2); //prem prem (inside object)
+console.log(object1.fName, object2.fName); //prem prem (only values)
 
 //Class MATH
 const myvalue = Math;
 console.log(myvalue); //check Math possible values
+
+//Math property
 console.log(Math.PI);
 
+//Math methods
 console.log(Math.round(4.4999));
 console.log(Math.ceil(4.0000001));
 console.log(Math.floor(4.9999));
@@ -107,7 +110,7 @@ console.log(Math.cbrt(125));
 console.log(Math.min(10, -33));
 console.log(Math.max(10, -33));
 
-console.log(Math.random()); //   ]0-1[
+console.log(Math.random()); //   [0-1[
 
 //---------------------Conditions // control flow (if)
 //true: true, 1, "sdf",{}, [], ()=>{}
@@ -137,10 +140,10 @@ if (pet === ("cat" || "dog")) {
   console.log("alien");
 }
 
-//switch
+//switch (case, break, default)
 switch (pet) {
   case "cat":
-    console.log("meowww");
+    console.log(`meowww ${pet}hino`);
     break;
   case "dog":
     console.log("wooof");
@@ -155,15 +158,16 @@ switch (pet) {
 
 //------inline if condition
 cns = false;
-cns = cns || "prem";
-cns && console.log("its true");
-!cns && console.log("not print false");
+cns = cns || "prem"; //cns now is true
+cns && console.log(`cns is true: ${cns}`); //print
+!cns && console.log("this one never prints, only prints when !cns=true");
 console.log(cns); //prints "prem" not "true"
 
 //if else TERNARY:  exp1?true:false;
 age >= 18 && true ? console.log("Adult") : console.log("Minor");
 age >= 18 ? console.log("Adult") : console.log("Minor");
 
+//if - else if... - else
 pet === "cat"
   ? console.log("meowww")
   : pet === "dog"
@@ -174,45 +178,38 @@ pet === "cat"
 
 try {
   const ffname = "maca";
-  console.log("Executes YES");
-  throw new Error("Test error throw");
+  console.log("Executes?: YES");
+  throw new Error("Test error throw"); //this is the message
   //   const bio = ffname + " is the person you will meet";
   //   console.log(bio);
   console.log("Executes NO");
 } catch (error) {
   //send
-  console.log(error.message);
+  console.log(error.message); //this prints the message
 } finally {
   //this part will be always executed
-  console.log("This executes always");
+  console.log("Finally: This executes always");
 }
 
 //Timeschedulling
+
 //set time out: wait for 3 second to execute the FX inside
 
-// setTimeout(() => {
-//   console.log("From set timeout");
-// }, 3000);
+setTimeout(() => {
+  console.log("From set timeout at 3sec");
+}, 3000);
 
 //set Interval: know the time interval and keep executing after the interval time
 
-// let ii = 0;
-// const counter = setInterval(() => {
-//   console.log("from interval", ii++);
-//   if (ii === 10) {
-//     clearInterval(counter);
-//   }
-// }, 1000);
+let ii = 0;
+const counter = setInterval(() => {
+  console.log("from set Interval", ii++);
+  if (ii === 10) {
+    clearInterval(counter);
+  }
+}, 1000);
 
-//challenge: guess order of execution
-
-// console.log("1. starting");
-// console.log("2. starting");
-// console.log("3. starting");
-// console.log("4. starting");
-// console.log("5. starting");
-// console.log("6. starting");
-
+//challenge: guess order of execution???
 // console.log("1 executed");
 
 // const info = () => {
@@ -233,7 +230,7 @@ try {
 
 // console.log("6 executed");
 
-//SLN: EXECUTES: 1,3,2,5,4,6
+//SLN: EXECUTES: 1,3,2,6,5,4
 
 // debugger;
 
